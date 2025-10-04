@@ -1,0 +1,25 @@
+calibration_date: 2025-09-24 17:47:37.113279
+camera_matrix:
+- - 626.7389248446381
+  - 0.0
+  - 329.70984719076154
+- - 0.0
+  - 628.7595129028158
+  - 245.02231052481906
+- - 0.0
+  - 0.0
+  - 1.0
+distortion_coefficients:
+- - -0.03958433401412268
+  - 0.15349544480074323
+  - -0.0019630921430204376
+  - -0.0025970293985808027
+  - -0.6763622234888227
+image_size:
+- 480
+- 640
+- 3
+number_of_corresponding_points_used: 1138
+number_of_images_processed: 60
+number_of_images_used: 54
+projection_error: 0.2877318025770975

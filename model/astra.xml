@@ -1,0 +1,229 @@
+<mujoco model="astra_description">
+  <option timestep="0.02" iterations="150" solver="Newton" jacobian="dense" cone="elliptic" gravity="0 0 -9.8"/>
+
+  <compiler angle="radian" eulerseq="zyx" meshdir="meshes/"/>
+
+  <default>
+    <joint limited="true" damping="0.2" frictionloss="0.01"/>
+    <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" contype="0" conaffinity="0"/>
+    <motor ctrlrange="-1 1" ctrllimited="true"/>
+  </default>
+  
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="link_r1" file="link_r1.STL"/>
+    <mesh name="link_r2" file="link_r2.STL"/>
+    <mesh name="link_r3" file="link_r3.STL"/>
+    <mesh name="link_r4" file="link_r4.STL"/>
+    <mesh name="link_r5" file="link_r5.STL"/>
+    <mesh name="link_r6" file="link_r6.STL"/>
+    <mesh name="link_r7r" file="link_r7r.STL"/>
+    <mesh name="link_r7l" file="link_r7l.STL"/>
+    <mesh name="link_l1" file="link_l1.STL"/>
+    <mesh name="link_l2" file="link_l2.STL"/>
+    <mesh name="link_l3" file="link_l3.STL"/>
+    <mesh name="link_l4" file="link_l4.STL"/>
+    <mesh name="link_l5" file="link_l5.STL"/>
+    <mesh name="link_l6" file="link_l6.STL"/>
+    <mesh name="link_l7r" file="link_l7r.STL"/>
+    <mesh name="link_l7l" file="link_l7l.STL"/>
+    <mesh name="link_head_pan" file="link_head_pan.STL"/>
+    <mesh name="link_head_tilt" file="link_head_tilt.STL"/>
+  </asset>
+
+  <worldbody>
+    <!-- World Coordinate Frame Visualization -->
+    <light diffuse="0.5 0.5 0.5" pos="0 0 5" dir="0 0 -1"/> 
+
+    <geom name="ground" type="plane" size="5 5 0.1" pos="0 0 0" 
+          rgba="0.5 0.5 0.5 1" solimp="0.9 0.95 0.001" solref="0.02 1"/>
+    <body name="base_link" pos="0 0 0">
+      <inertial pos="-0.1726 -0.0011902 0.37074" mass="17.285"
+                diaginertia="0.88736 0.90938 0.076259"/>
+      <geom name="base_link_visual" mesh="base_link"/>
+      <body name="link_r1" pos="-0.0405 -0.065 0.227" quat="0.707107 0 0 -0.707107">
+        <inertial pos="0.027157 0 0" mass="0.70739"
+                  diaginertia="0.00060081 0.00042262 0.0002763"/>
+        <joint name="joint_r1" type="slide" axis="0 0 1" range="0 1.2" damping="0.5"/>
+        <geom name="link_r1_visual" mesh="link_r1"/>
+        <body name="link_r2" pos="0.068 0 0" quat="0.995699 0 0 0.092642">
+          <inertial pos="0.19797 -0.02415 0" mass="0.75209"
+                    diaginertia="0.0004318 0.0020715 0.0019227"/>
+          <joint name="joint_r2" type="hinge" axis="0 0 1" range="-1.57 1.57"/>
+          <geom name="link_r2_visual" mesh="link_r2"/>
+          <body name="link_r3" pos="0.29812 0 0" quat="0.769588 0 0 0.63854">
+            <inertial pos="0.10783 1.63e-05 -0.0023873" mass="0.39722"
+                      diaginertia="0.00020574 0.00075294 0.00062472"/>
+            <joint name="joint_r3" type="hinge" axis="0 0 1" range="-1.57 1.57"/>
+            <geom name="link_r3_visual" mesh="link_r3"/>
+              <body name="link_r4" pos="0.265 0 -0.087" quat="-3.67321e-06 1 0 0">
+              <inertial pos="7.4339e-05 0.033099 -0.027091" quat="0.973092 -0.230415 8.48689e-05 0.000248151" mass="0.087098" diaginertia="3.1196e-05 2.96393e-05 1.59127e-05" />
+              <joint name="joint_r4" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+              <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_r4" />
+              <body name="link_r5" quat="0.499998 0.5 -0.5 0.500002">
+                <inertial pos="0.01097 -0.0063842 -0.0053324" quat="0.487299 0.551081 0.290817 0.611781" mass="0.076944" diaginertia="2.22717e-05 1.83902e-05 1.01571e-05" />
+                <joint name="joint_r5" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+                <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_r5" />
+                <body name="link_r6" quat="0.707105 0.707108 0 0">
+                  <inertial pos="0.038451 4.6462e-05 0.063125" quat="0.955836 -0.000975047 0.2939 0.000303828" mass="0.13935" diaginertia="0.0001082 7.1049e-05 7.05137e-05" />
+                  <joint name="joint_r6" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+                  <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_r6" />
+                  <!-- <geom type="box" rgba="0 0 0 0" size="0.005 0.005 0.005" pos="0.063 0 0.195" quat="0.707105 0 -0.707108 0" />
+                  <geom type="box" rgba="0 0 0 0" size="0.005 0.005 0.005" pos="0.02 0 0.195" quat="0.707105 0 -0.707108 0" /> -->
+                  <body name="link_r7r" pos="0.078 0 0.195" quat="0.499998 0.5 -0.5 0.500002">
+                    <inertial pos="-0.083182 0.0061024 0.0093037" quat="0.504535 0.509113 0.526668 0.457023" mass="0.046957" diaginertia="9.48865e-05 8.93453e-05 7.01974e-06" />
+                    <joint name="joint_r7r" type="slide" axis="0 0 1" range="0 0.06" damping="1000" />
+                    <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_r7r" />
+                  </body>
+                  <body name="link_r7l" pos="0.078 0 0.195" quat="0.499998 0.5 -0.5 0.500002">
+                    <inertial pos="-0.087979 0.0061024 -0.0093037" quat="0.509183 0.504633 0.457195 0.526356" mass="0.046957" diaginertia="9.57166e-05 9.01718e-05 7.01907e-06" />
+                    <joint name="joint_r7l" type="slide" axis="0 0 1" range="-0.06 0" damping="1000" />
+                    <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_r7l" />
+                  </body>
+                  <!-- <body name="link_ree_teleop" pos="0.020 0.0 0.195" quat="0.707107 0 0 -0.707107">
+                    <inertial pos="0.0 0.0 0.0" mass="0.0" diaginertia="0.0 0.0 0.0" />
+                    <geom name="eef_sphere_r" type="sphere" size="0.05" rgba="1 0 0 0" />
+                  </body> -->
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="link_l1" pos="-0.0405 0.065 0.227" quat="0.707105 0 0 0.707108">
+        <inertial pos="0.027157 0 -6.6736e-12" quat="1 5.07996e-06 0 0" mass="0.70739" diaginertia="0.00060081 0.00042262 0.0002763" />
+        <joint name="joint_l1" type="slide" axis="0 0 1" range="0 1.2" damping="0.5"/>
+        <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l1" />
+        <body name="link_l2" pos="0.068 0 0" quat="0.995699 0 0 -0.092642">
+          <inertial pos="0.19797 0.02415 1.1147e-11" quat="0.451527 0.451527 0.544172 0.544172" mass="0.75209" diaginertia="0.00213139 0.0019227 0.000371911" />
+          <joint name="joint_l2" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+          <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l2" />
+          <body name="link_l3" pos="0.29812 0 0" quat="0.769588 0 0 -0.63854">
+            <inertial pos="0.10783 1.63e-05 -0.0023873" quat="0.499373 0.500625 0.500625 0.499375" mass="0.39722" diaginertia="0.00075294 0.000624723 0.000205737" />
+            <joint name="joint_l3" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+            <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l3" />
+            <body name="link_l4" pos="0.265 0 -0.087" quat="-3.67321e-06 1 0 0">
+              <inertial pos="-7.4339e-05 -0.033099 -0.027091" quat="0.973092 0.230415 -8.48694e-05 0.000248154" mass="0.087098" diaginertia="3.1196e-05 2.96393e-05 1.59127e-05" />
+              <joint name="joint_l4" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+              <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l4" />
+              <body name="link_l5" quat="0.499998 -0.5 -0.5 -0.500002">
+                <inertial pos="0.011811 0.0068737 -0.0043391" quat="0.614884 0.287165 0.554869 0.481222" mass="0.071465" diaginertia="2.21068e-05 1.83421e-05 9.97212e-06" />
+                <joint name="joint_l5" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+                <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l5" />
+                <body name="link_l6" quat="0.707105 -0.707108 0 0">
+                  <inertial pos="0.038451 4.6462e-05 0.063125" quat="0.955836 -0.000975047 0.2939 0.000303828" mass="0.13935" diaginertia="0.0001082 7.1049e-05 7.05137e-05" />
+                  <joint name="joint_l6" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+                  <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l6" />
+                  <!-- <geom type="box" rgba="0 0 0 0" size="0.005 0.005 0.005" pos="0.063 0 0.195" quat="0.707105 0 -0.707108 0" />
+                  <geom type="box" rgba="0 0 0 0" size="0.005 0.005 0.005" pos="0.02 0 0.195" quat="0.707105 0 -0.707108 0" /> -->
+                  <body name="link_l7r" pos="0.078 0 0.195" quat="0.499998 0.5 -0.5 0.500002">
+                    <inertial pos="-0.083182 0.0061024 0.0093037" quat="0.504535 0.509113 0.526668 0.457023" mass="0.046957" diaginertia="9.48865e-05 8.93453e-05 7.01974e-06" />
+                    <joint name="joint_l7r" type="slide" axis="0 0 1" range="0 0.06" damping="1000" />
+                    <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l7r" />
+                  </body>
+                  <body name="link_l7l" pos="0.078 0 0.195" quat="0.499998 0.5 -0.5 0.500002">
+                    <inertial pos="-0.087979 0.0061024 -0.0093037" quat="0.509183 0.504633 0.457195 0.526356" mass="0.046957" diaginertia="9.57166e-05 9.01718e-05 7.01907e-06" />
+                    <joint name="joint_l7l" type="slide" axis="0 0 1" range="-0.06 0" damping="1000" />
+                    <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_l7l" />
+                  </body>
+                  <!-- <body name="link_lee_teleop" pos="0.020 0.0 0.195" quat="0.707107 0 0 0.707107">
+                    <inertial pos="0.0 0.0 0.0" mass="0.0" diaginertia="0.0 0.0 0.0" />
+                    <geom name="eef_sphere_l" type="sphere" size="0.05" rgba="0 1 0 0" />
+                  </body> -->
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="link_head_pan" pos="0.05 0 1.429" quat="-3.67321e-06 -1 0 0">
+        <inertial pos="7.4339e-05 0.033099 -0.027091" quat="0.973092 -0.230415 8.48689e-05 0.000248151" mass="0.087098" diaginertia="3.1196e-05 2.96393e-05 1.59127e-05" />
+        <joint name="joint_head_pan" type="hinge" axis="0 0 1" range="-1.57 1.57" />
+        <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_head_pan" />
+        <body name="link_head_tilt" quat="0.707105 0.707108 0 0">
+          <inertial pos="-0.0076351 0 -0.0029726" quat="0.59168 0.59168 -0.387188 0.387188" mass="0.032288" diaginertia="5.64623e-06 5.49817e-06 4.6642e-06" />
+          <joint name="joint_head_tilt" type="hinge" axis="0 0 1" range="-3.14 3.14" />
+          <geom rgba="0.75294 0.75294 0.75294 1" mesh="link_head_tilt" />
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="joint_r1" joint="joint_r1" gear="200" />
+    <motor name="joint_r2" joint="joint_r2" gear="10" />
+    <motor name="joint_r3" joint="joint_r3" gear="10" />
+    <motor name="joint_r4" joint="joint_r4" gear="10" />
+    <motor name="joint_r5" joint="joint_r5" gear="10" />
+    <motor name="joint_r6" joint="joint_r6" gear="10" />
+    <motor name="joint_r7r" joint="joint_r7r" gear="10" />
+    <motor name="joint_r7l" joint="joint_r7l" gear="10" />
+    <motor name="joint_l1" joint="joint_l1" gear="200" />
+    <motor name="joint_l2" joint="joint_l2" gear="10" />
+    <motor name="joint_l3" joint="joint_l3" gear="10" />
+    <motor name="joint_l4" joint="joint_l4" gear="10" />
+    <motor name="joint_l5" joint="joint_l5" gear="10" />
+    <motor name="joint_l6" joint="joint_l6" gear="10" />
+    <motor name="joint_l7r" joint="joint_l7r" gear="10" />
+    <motor name="joint_l7l" joint="joint_l7l" gear="10" />
+    <motor name="joint_head_pan" joint="joint_head_pan" gear="10" />
+    <motor name="joint_head_tilt" joint="joint_head_tilt" gear="10" />
+  </actuator>
+
+  <sensor>
+    <actuatorpos name="joint_r1_p" actuator="joint_r1" />
+    <actuatorvel name="joint_r1_v" actuator="joint_r1" />
+    <actuatorfrc name="joint_r1_f" actuator="joint_r1" noise="0.001" />
+    <actuatorpos name="joint_r2_p" actuator="joint_r2" />
+    <actuatorvel name="joint_r2_v" actuator="joint_r2" />
+    <actuatorfrc name="joint_r2_f" actuator="joint_r2" noise="0.001" />
+    <actuatorpos name="joint_r3_p" actuator="joint_r3" />
+    <actuatorvel name="joint_r3_v" actuator="joint_r3" />
+    <actuatorfrc name="joint_r3_f" actuator="joint_r3" noise="0.001" />
+    <actuatorpos name="joint_r4_p" actuator="joint_r4" />
+    <actuatorvel name="joint_r4_v" actuator="joint_r4" />
+    <actuatorfrc name="joint_r4_f" actuator="joint_r4" noise="0.001" />
+    <actuatorpos name="joint_r5_p" actuator="joint_r5" />
+    <actuatorvel name="joint_r5_v" actuator="joint_r5" />
+    <actuatorfrc name="joint_r5_f" actuator="joint_r5" noise="0.001" />
+    <actuatorpos name="joint_r6_p" actuator="joint_r6" />
+    <actuatorvel name="joint_r6_v" actuator="joint_r6" />
+    <actuatorfrc name="joint_r6_f" actuator="joint_r6" noise="0.001" />
+    <actuatorpos name="joint_r7r_p" actuator="joint_r7r" />
+    <actuatorvel name="joint_r7r_v" actuator="joint_r7r" />
+    <actuatorfrc name="joint_r7r_f" actuator="joint_r7r" noise="0.001" />
+    <actuatorpos name="joint_r7l_p" actuator="joint_r7l" />
+    <actuatorvel name="joint_r7l_v" actuator="joint_r7l" />
+    <actuatorfrc name="joint_r7l_f" actuator="joint_r7l" noise="0.001" />
+    <actuatorpos name="joint_l1_p" actuator="joint_l1" />
+    <actuatorvel name="joint_l1_v" actuator="joint_l1" />
+    <actuatorfrc name="joint_l1_f" actuator="joint_l1" noise="0.001" />
+    <actuatorpos name="joint_l2_p" actuator="joint_l2" />
+    <actuatorvel name="joint_l2_v" actuator="joint_l2" />
+    <actuatorfrc name="joint_l2_f" actuator="joint_l2" noise="0.001" />
+    <actuatorpos name="joint_l3_p" actuator="joint_l3" />
+    <actuatorvel name="joint_l3_v" actuator="joint_l3" />
+    <actuatorfrc name="joint_l3_f" actuator="joint_l3" noise="0.001" />
+    <actuatorpos name="joint_l4_p" actuator="joint_l4" />
+    <actuatorvel name="joint_l4_v" actuator="joint_l4" />
+    <actuatorfrc name="joint_l4_f" actuator="joint_l4" noise="0.001" />
+    <actuatorpos name="joint_l5_p" actuator="joint_l5" />
+    <actuatorvel name="joint_l5_v" actuator="joint_l5" />
+    <actuatorfrc name="joint_l5_f" actuator="joint_l5" noise="0.001" />
+    <actuatorpos name="joint_l6_p" actuator="joint_l6" />
+    <actuatorvel name="joint_l6_v" actuator="joint_l6" />
+    <actuatorfrc name="joint_l6_f" actuator="joint_l6" noise="0.001" />
+    <actuatorpos name="joint_l7r_p" actuator="joint_l7r" />
+    <actuatorvel name="joint_l7r_v" actuator="joint_l7r" />
+    <actuatorfrc name="joint_l7r_f" actuator="joint_l7r" noise="0.001" />
+    <actuatorpos name="joint_l7l_p" actuator="joint_l7l" />
+    <actuatorvel name="joint_l7l_v" actuator="joint_l7l" />
+    <actuatorfrc name="joint_l7l_f" actuator="joint_l7l" noise="0.001" />
+    <actuatorpos name="joint_head_pan_p" actuator="joint_head_pan" />
+    <actuatorvel name="joint_head_pan_v" actuator="joint_head_pan" />
+    <actuatorfrc name="joint_head_pan_f" actuator="joint_head_pan" noise="0.001" />
+    <actuatorpos name="joint_head_tilt_p" actuator="joint_head_tilt" />
+    <actuatorvel name="joint_head_tilt_v" actuator="joint_head_tilt" />
+    <actuatorfrc name="joint_head_tilt_f" actuator="joint_head_tilt" noise="0.001" />
+  </sensor>
+</mujoco>
