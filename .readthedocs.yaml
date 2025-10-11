@@ -1,0 +1,78 @@
+# Read the Docs 配置文件
+# 用于构建 AhaRobot 机器人遥操作系统文档
+
+# 构建配置
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+  commands:
+    # 安装系统依赖
+    - apt-get update
+    - apt-get install -y libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev libgomp1
+    # 安装Python依赖
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    # 安装修改的第三方包
+    - pip install ./modified_pkg/mr_urdf_loader/
+    - pip install ./modified_pkg/urchin/
+    # 安装文档构建工具
+    - pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+    # 构建文档
+    - sphinx-build -W -b html docs/source docs/_build/html
+
+# 文档格式
+formats:
+  - htmlzip
+  - pdf
+
+# Python配置
+python:
+  install:
+    - requirements: requirements.txt
+    - method: pip
+      path: .
+
+# 版本配置
+version:
+  # 使用git标签作为版本
+  type: tags
+  # 默认显示最新版本
+  default: latest
+
+# 文档配置
+sphinx:
+  configuration: docs/source/conf.py
+  fail_on_warning: false
+
+# 子模块配置
+submodules:
+  include: []
+  exclude: []
+  recursive: false
+
+# 搜索配置
+search:
+  ranking:
+    # 优先显示标题匹配
+    title: 10
+    # 其次显示内容匹配
+    content: 5
+    # 最后显示代码匹配
+    code: 1
+
+# 通知配置
+notifications:
+  # 构建失败时发送邮件通知
+  build: true
+  # 版本更新时发送邮件通知
+  version: true
+
+# 高级配置
+advanced:
+  # 启用并行构建
+  parallel: true
+  # 构建超时时间（分钟）
+  build_timeout: 15
+  # 启用缓存
+  cache: true
