@@ -4,7 +4,7 @@
   <compiler angle="radian" eulerseq="zyx" meshdir="meshes/"/>
 
   <default>
-    <joint limited="true" damping="0.2" frictionloss="0.01"/>
+    <joint limited="true" damping="0.6" frictionloss="0.01"/>
     <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" contype="0" conaffinity="0"/>
     <motor ctrlrange="-1 1" ctrllimited="true"/>
   </default>
