@@ -14,16 +14,16 @@ class OrgMap:
         # 计算方法：根据零位时，cam_to_tag和mujoco_to_cam，逆解出mujoco_to_tag
         if side =="left":
             self.mujoco_to_cam = np.array([
-                [0, 0, -1, 0.95], 
+                [0, 0, -1, 1], 
                 [1, 0, 0, 0.43], 
-                [0, -1, 0, 0.2], 
+                [0, -1, 0, 0.3], 
                 [0, 0, 0, 1], 
             ])
         else:
             self.mujoco_to_cam = np.array([
-                [0, 0, -1, 0.95], 
+                [0, 0, -1, 1], 
                 [1, 0, 0, -0.43], 
-                [0, -1, 0, 0.2], 
+                [0, -1, 0, 0.3], 
                 [0, 0, 0, 1], 
             ])
     

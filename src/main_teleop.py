@@ -94,7 +94,7 @@ if __name__ == "__main__":
             else:
                 # 失败时设置当前ctrl为平衡状态值,减少抖动
                 ctrl_r = np.array([0, 0, 0, -0.02, 0])
-                ctrl_prim_r = 0.11
+                ctrl_prim_r = 0.1
                 # 对ctrl进行平均
                 ctrl_r = ctrl_low_pass_coff/5 * ctrl_r + (1 - ctrl_low_pass_coff/5) * ctrl_r_last
                 ctrl_prim_r = ctrl_low_pass_coff/5 * ctrl_prim_r + (1 - ctrl_low_pass_coff/5) * ctrl_prim_r_last
@@ -117,7 +117,7 @@ if __name__ == "__main__":
             else:
                 # 失败时设置当前ctrl为平衡状态值,减少抖动
                 ctrl_l = np.array([0, 0, 0, 0.02, 0])
-                ctrl_prim_l = 0.11
+                ctrl_prim_l = 0.1
                 # 对ctrl进行平均
                 ctrl_l = ctrl_low_pass_coff/5 * ctrl_l + (1 - ctrl_low_pass_coff/5) * ctrl_l_last
                 ctrl_prim_l = ctrl_low_pass_coff/5 * ctrl_prim_l + (1 - ctrl_low_pass_coff/5) * ctrl_prim_l_last
