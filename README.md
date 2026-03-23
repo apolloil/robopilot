@@ -66,7 +66,7 @@ python src/main_teleop.py
 ## 模型文件
 
 项目包含完整的 Aharobot 机器人模型，包括：
-- MuJoCo XML 格式的物理仿真模型（注意：通过damping设置，收束了末端夹爪的位置）
+- MuJoCo XML 格式的物理仿真模型
 - URDF 格式的机器人描述文件
 
 ## 更多信息
